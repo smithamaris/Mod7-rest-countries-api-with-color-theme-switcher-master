@@ -23,8 +23,10 @@ function renderCountries(data) {
 
   data.forEach((country) => {
     const cardClone = cardTemplate.content.cloneNode(true);
-    const link = cardClone.querySelector("a");
-    link.href = `details.html?name=${encodeURIComponent(country.name.common)}`;
+    // const link = cardClone.querySelector("a");
+    // link.href = `./details.html?name=${encodeURIComponent(country.name.common)}`;
+
+    cardClone.querySelector("a").href = './details.html?name=' + country.name.common;
 
     cardClone.querySelector("img").src = country.flags.png;
     cardClone.querySelector("img").alt = country.name.common;

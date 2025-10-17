@@ -1,0 +1,71 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.3s, color 0.3s;
+}
+
+.country-card {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.country-card img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    align-self: center;
+    border-radius: 8px;
+}
+
+.borders {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.border-link {
+    padding: 0.4rem 0.8rem;
+    background: var(--element-bg);
+    color: var(--text);
+    border-radius: 4px;
+    text-decoration: none;
+    box-shadow: 0 0 3px rgba(0,0,0,0.2);
+}
+
+.border-link:hover {
+    background: var(--hover-bg);
+}
+
+/* Dark mode variables */
+:root {
+    --bg: #fafafa;
+    --text: #111;
+    --element-bg: #fff;
+    --hover-bg: #ddd;
+}
+
+body.dark {
+    --bg: #202c37;
+    --text: #ffffff;
+    --element-bg: #2b3945;
+    --hover-bg: #3c4a5a;
+}
+
+@media (min-width: 768px) {
+    .country-card {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .country-card img {
+        margin-right: 2rem;
+    }
+}
