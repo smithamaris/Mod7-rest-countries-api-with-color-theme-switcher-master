@@ -7,10 +7,11 @@ const themeToggle = document.getElementById('theme-toggle');
 document.addEventListener("DOMContentLoaded", async () => {
     applySavedTheme();
 
+    // const code = urlParams.get("code");
     const urlParams = new URLSearchParams(window.location.search);
     const name = urlParams.get("name");
 
-    if(!name) {
+    if(!name && !code) {
         countryContainer.textContent = 'No country selected.';
         return;
     }
@@ -31,6 +32,17 @@ function renderCountry(country) {
     const currencies = Object.values(country.currencies || {}).map(c => c.name).join(", ");
     const languages = Object.values(country.languages || {}).join(", ");
     const capital = country.capital?.[0] || "N/A";
+    const borders = country.borders || [];
+
+    const borderHTML = borders.length
+        ? `<div class="borders">
+              <strong>Border Countries:</strong>
+              ${borders.map(code => `
+                  <a class="border-link" href="details.html?code=${code}">${code}</a>
+              `).join('')}
+           </div>`
+        : `<p><strong>Border Countries:</strong> None</p>`;
+    
     // console.log(object);
     
     countryContainer.innerHTML = ` 
@@ -44,6 +56,7 @@ function renderCountry(country) {
         <p><strong>Capital:</strong> ${capital}</p>
         <p><strong>Currencies:</strong> ${currencies}</p>
         <p><strong>Languages:</strong> ${languages}</p>
+        ${borderHTML}
         
     </div>
   `;
